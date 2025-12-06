@@ -1,6 +1,7 @@
 // NES Cartridge - ROM loading and mapper support
 
 import { Mapper0 } from './mappers/mapper0.js';
+import { Mapper1 } from './mappers/mapper1.js';
 
 export class Cartridge {
     constructor(romData) {
@@ -59,6 +60,9 @@ export class Cartridge {
         switch (this.mapperId) {
             case 0:
                 this.mapper = new Mapper0(prgBanks, chrBanks);
+                break;
+            case 1:
+                this.mapper = new Mapper1(prgBanks, chrBanks);
                 break;
             default:
                 console.error(`Mapper ${this.mapperId} not supported`);
